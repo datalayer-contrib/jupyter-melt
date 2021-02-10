@@ -26,8 +26,12 @@ class bdist_egg_disabled(bdist_egg):
 
 data_files = [
     (
-        'etc/jupyter/jupyter_notebook_config.d',
-        ['nbmelt.json'],
+        "etc/jupyter/jupyter_notebook_config.d",
+        ["jupyter_notebook_config.d/nbmelt.json"],
+    ),
+    (
+        "etc/jupyter/jupyter_server_config.d",
+        ["jupyter_server_config.d/nbmelt.json"],
     ),
 ]
 
