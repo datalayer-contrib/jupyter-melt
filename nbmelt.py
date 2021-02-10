@@ -27,8 +27,8 @@ def _load_extension(app, AuthenticatedHandler):
         return
     timeout = int(timeout_env)
     app.log.info(
-        "This notebook will self destruct if you don't use it in %s seconds!",
-        timeout)
+        "This notebook will self destruct if you don't use it in %s seconds!", timeout
+    )
     state = {'called': False}
     save_method = AuthenticatedHandler.get_current_user
 
@@ -44,11 +44,14 @@ def _load_extension(app, AuthenticatedHandler):
             # only do this once:
             AuthenticatedHandler.get_current_user = save_method
         return user
+
     AuthenticatedHandler.get_current_user = stop_melting
 
     def shutdown_if_unused():
         if not state['called']:
-            app.log.error("No authenticated requests received in %ss, exiting.", timeout)
+            app.log.error(
+                "No authenticated requests received in %ss, exiting.", timeout
+            )
             IOLoop.current().stop()
 
     IOLoop.current().call_later(timeout, shutdown_if_unused)

@@ -20,8 +20,10 @@ class bdist_egg_disabled(bdist_egg):
     """
 
     def run(self):
-        sys.exit("Aborting implicit building of eggs."
-                 " Use `pip install .` to install from source.")
+        sys.exit(
+            "Aborting implicit building of eggs."
+            " Use `pip install .` to install from source."
+        )
 
 
 data_files = [
